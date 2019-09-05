@@ -306,8 +306,15 @@ function clearEnemy() {
     enemySelected = false;
     // empty grid
     $("#enemy").empty();
+    // reduce remaining opponents
+    opponents -= 1;
     // update info
-    changeInfo("You defeated " + enemyJob + "! Pick your next victim.");
+    if (opponents < 1) {
+        changeInfo("Congratulations! You've defeated all your opponents.")
+    }
+    else {
+        changeInfo("You defeated " + enemyJob + "! Pick your next victim.");
+    }
 }
 
 // combat log updates!
