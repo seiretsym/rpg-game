@@ -49,7 +49,6 @@ function selectCharacter(job) {
         case "Astrologian":
             moveCharacter("#job1", job);
             characterSelected = true;
-            console.log(characterSelected);
             break;
         case "Bard":
             moveCharacter("#job2", job);
@@ -129,10 +128,13 @@ function showCharacters() {
 
 function newGame() {
     // prompt user to select a character
-    $("#info").html("Select your Job!")
+    changeInfo("Select your Job!");
     showCharacters();
 }
 
+function changeInfo(str) {
+    $("#info").html(str);
+}
 /// events
 newGame();
 
@@ -147,7 +149,7 @@ $(document).ready(function() {
                 selectEnemy(this.textContent);
             }
             else {
-                $("#info").html("Defeat your current enemy first!")
+                changeInfo("Defeat your current enemy first!");
             }
         }
     })
