@@ -34,17 +34,34 @@ var characters = [
 ];
 
 var job1 = $("#job1");
-console.log(job1);
-console.log(characters);
-
-for (var i = 0; i < 4; i++) {
-    $("#jobImg"+(i+1)).attr("src", characters[i].img);
-    $("#hp"+(i+1)).html(characters[i].hp);
-    $("#jobName"+(i+1)).html(characters[i].name);
-    $("#atk"+(i+1)).html(characters[i].atk);
-}
-
 
 /// functions
 
+// select a character
+function selectCharacter(job) {
+
+}
+
+// plug in character information to html elements
+function showCharacters() {
+    for (var i = 0; i < 4; i++) {
+        $("#jobImg"+(i+1)).attr("src", characters[i].img);
+        $("#hp"+(i+1)).html(characters[i].hp);
+        $("#jobName"+(i+1)).html(characters[i].name);
+        $("#atk"+(i+1)).html(characters[i].atk);
+    }
+}
+
+
+function newGame() {
+    showCharacters();
+}
+
 /// events
+newGame();
+
+$(document).ready(function() {
+    $("button").on("click", function() {
+        console.log(this.textContent);
+    })
+})
