@@ -45,6 +45,7 @@ var charHP = 0,
 /// global booleans
 var characterSelected = false;
 var enemySelected = false;
+var restartGame = false;
 
 /// object default values
 var defaultJob1 = $("#job1").html;
@@ -197,6 +198,7 @@ function newGame() {
     $("#job4").html = defaultJob4;
     characterSelected = false;
     enemySelected = false;
+    restartGame = false;
     opponents = 3;
 
 
@@ -391,6 +393,7 @@ function combatLog() {
 function restart() {
     // show a play again button
     $("#info").append("<button class='restart font-weight-bold text-light text-center p-1 rounded border-warning ml-3 mt-0 mb-0 line-height-1 bg-secondary'>Play Again</button>");
+    restartGame = true;
 }
 
 /// events
@@ -406,7 +409,7 @@ $(document).ready(function() {
             if (!(enemySelected)) {
                 selectEnemy(this.textContent);
             }
-            else {
+            else if (!(restartGame)) {
                 changeInfo("Defeat your current enemy first!");
             }
         }
@@ -417,7 +420,6 @@ $(document).ready(function() {
             // again not sure why this needs to be inside $(".attack")
             $(".restart").on("click", function() {
                 newGame();
-                console.log("this works");
             })
 
         })
