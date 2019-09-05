@@ -39,7 +39,26 @@ var job1 = $("#job1");
 
 // select a character
 function selectCharacter(job) {
-
+    console.log(job);
+    // switch case instead of if
+    switch (job) {
+        case "Astrologian":
+            // move selected character to your character slot
+            $("#you").html($("#job1").clone());
+            break;
+        case "Bard":
+            // move selected character to your character slot
+            $("#you").html($("#job2").clone());
+            break;
+        case "Dragoon":
+            // move selected character to your character slot
+            $("#you").html($("#job3").clone());
+            break;
+        case "Paladin":
+            // move selected character to your character slot
+            $("#you").html($("#job4").clone());
+            break;
+    }
 }
 
 // plug in character information to html elements
@@ -62,6 +81,6 @@ newGame();
 
 $(document).ready(function() {
     $("button").on("click", function() {
-        console.log(this.textContent);
+        selectCharacter(this.textContent);
     })
 })
