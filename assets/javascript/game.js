@@ -43,22 +43,30 @@ function selectCharacter(job) {
     // switch case instead of if
     switch (job) {
         case "Astrologian":
-            // move selected character to your character slot
-            $("#you").html($("#job1").clone());
+            moveCharacter("#job1");
             break;
         case "Bard":
-            // move selected character to your character slot
-            $("#you").html($("#job2").clone());
+            moveCharacter("#job2");
             break;
         case "Dragoon":
-            // move selected character to your character slot
-            $("#you").html($("#job3").clone());
+            moveCharacter("#job3");
             break;
         case "Paladin":
-            // move selected character to your character slot
-            $("#you").html($("#job4").clone());
+            moveCharacter("#job4");
             break;
     }
+}
+
+// function to move a selected character
+function moveCharacter(chr) {
+    var clone = $(chr).clone();
+    // hide job from character selection
+    $(chr).addClass("d-none");
+    // replace select button with class name from clone
+    clone.find("button").remove();
+    // move selected character to your character slot
+    clone.addClass("col-sm-12").removeClass("col-sm-3");
+    $("#you").html(clone);
 }
 
 // plug in character information to html elements
@@ -73,6 +81,8 @@ function showCharacters() {
 
 
 function newGame() {
+    // prompt user to select a character
+    $("#info").html("Select your Job!")
     showCharacters();
 }
 
