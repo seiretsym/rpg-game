@@ -5,30 +5,30 @@
 var characters = [
     {
         name: "Astrologian",
-        hp: 140,
+        hp: 150,
         atk: 8,
-        counter: 9,
+        counter: 20,
         img: "assets/images/ffxiv_ast.png"
     },
     {
         name: "Bard",
-        hp: 120,
-        atk: 10,
-        counter: 10,
+        hp: 130,
+        atk: 9,
+        counter: 25,
         img: "assets/images/ffxiv_brd.png"
     },
     {
         name: "Dragoon",
         hp: 100,
-        atk: 12,
-        counter: 11,
+        atk: 17,
+        counter: 30,
         img: "assets/images/ffxiv_drg.png"
     },
     {
         name: "Paladin",
-        hp: 160,
-        atk: 6,
-        counter: 8,
+        hp: 180,
+        atk: 7,
+        counter: 15,
         img: "assets/images/ffxiv_pld.png"
     }
 ];
@@ -39,7 +39,8 @@ var charHP = 0,
     charJob = "",
     enemyHP = 0,
     enemyATK = 0,
-    enemyJob = "";
+    enemyJob = "",
+    opponents = 3;
 
 /// global booleans
 var characterSelected = false;
@@ -190,9 +191,17 @@ function attackEnemy() {
         enemyHP -= charATK;
         updateEnemyHp(enemyJob);
 
-        // take damage from enemy counter
-        charHP -= enemyATK;
-        $("#hp1").html(charHP);
+        // if enemy isn't dead then take damage from enemy counter
+        if (isEnemyDefeated()) {
+            clearEnemy();   
+            // clear log;
+            $("#log").html("<br><br>");         
+        }
+        else {
+            charHP -= enemyATK;
+            $("#hp1").html(charHP);
+            combatLog();
+        }
 
         // then update character ATK value
         charATK += characters[0].atk;
@@ -203,9 +212,17 @@ function attackEnemy() {
         enemyHP -= charATK;
         updateEnemyHp(enemyJob);
 
-        // take damage from enemy counter
-        charHP -= enemyATK;
-        $("#hp2").html(charHP);
+        // if enemy isn't dead then take damage from enemy counter
+        if (isEnemyDefeated()) {
+            clearEnemy();   
+            // clear log;
+            $("#log").empty();         
+        }
+        else {
+            charHP -= enemyATK;
+            $("#hp2").html(charHP);
+            combatLog();
+        }
 
         // then update character ATK value
         charATK += characters[1].atk;
@@ -216,9 +233,17 @@ function attackEnemy() {
         enemyHP -= charATK;
         updateEnemyHp(enemyJob);
 
-        // take damage from enemy counter
-        charHP -= enemyATK;
-        $("#hp3").html(charHP);
+        // if enemy isn't dead then take damage from enemy counter
+        if (isEnemyDefeated()) {
+            clearEnemy();
+            // clear log;
+            $("#log").empty();             
+        }
+        else {
+            charHP -= enemyATK;
+            $("#hp3").html(charHP);
+            combatLog();
+        }
 
         // then update character ATK value
         charATK += characters[2].atk;
@@ -229,9 +254,17 @@ function attackEnemy() {
         enemyHP -= charATK;
         updateEnemyHp(enemyJob);
 
-        // take damage from enemy counter
-        charHP -= enemyATK;
-        $("#hp4").html(charHP);
+        // if enemy isn't dead then take damage from enemy counter
+        if (isEnemyDefeated()) {
+            clearEnemy();
+            // clear log;
+            $("#log").empty();            
+        }
+        else {
+            charHP -= enemyATK;
+            $("#hp4").html(charHP);
+            combatLog();
+        }
 
         // then update character ATK value
         charATK += characters[3].atk;
@@ -256,6 +289,41 @@ function updateEnemyHp(enemy) {
             break;
     }
 }
+
+// check if enemy is defeated
+function isEnemyDefeated() {
+    if (enemyHP <= 0) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+// clear enemy grid to prepare for next opponent
+function clearEnemy() {
+    // disable enemy selected, so new enemy can be selected
+    enemySelected = false;
+    // empty grid
+    $("#enemy").empty();
+    // update info
+    changeInfo("You defeated " + enemyJob + "! Pick your next victim.");
+}
+
+// combat log updates!
+function combatLog() {
+    // first clear log
+    $("#log").empty();
+
+    // then output damage done to enemy
+    $("#log").html("You deal " + charATK + " points of damage to " + enemyJob + "!");
+
+    // line break because it's cool
+    $("#log").append("<br>");
+    // then output damage taken
+    $("#log").append(enemyJob + " counter attacks you for " + enemyATK + " points of damage!");
+}
+
 /// events
 newGame();
 
