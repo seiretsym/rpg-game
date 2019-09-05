@@ -46,6 +46,12 @@ var charHP = 0,
 var characterSelected = false;
 var enemySelected = false;
 
+/// object default values
+var defaultJob1 = $("#job1").html;
+var defaultJob2 = $("#job2").html;
+var defaultJob3 = $("#job3").html;
+var defaultJob4 = $("#job4").html;
+
 /// functions
 
 // set character global stats
@@ -168,7 +174,7 @@ function showCharacters() {
     for (var i = 0; i < 4; i++) {
         $("#jobImg"+(i+1)).attr("src", characters[i].img);
         $("#hp"+(i+1)).html(characters[i].hp);
-        $("#jobName"+(i+1)).prepend("<button class='button font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary'>" + characters[i].name + "</button>");
+        $("#button"+(i+1)).html(characters[i].name);
         $("#atk"+(i+1)).html(characters[i].atk);
     }
 }
@@ -178,6 +184,22 @@ function newGame() {
     // prompt user to select a character
     changeInfo("Select your Job!");
     showCharacters();
+    // reset everything!
+    $("#you").empty();
+    $("#lose").empty();
+    $("#job1").removeClass("invisible");
+    $("#job2").removeClass("invisible");
+    $("#job3").removeClass("invisible");
+    $("#job4").removeClass("invisible");
+    $("#job1").html = defaultJob1;
+    $("#job2").html = defaultJob2;
+    $("#job3").html = defaultJob3;
+    $("#job4").html = defaultJob4;
+    characterSelected = false;
+    enemySelected = false;
+    opponents = 3;
+
+
 }
 
 function changeInfo(str) {
@@ -310,7 +332,8 @@ function clearEnemy() {
     opponents -= 1;
     // update info
     if (opponents < 1) {
-        changeInfo("Congratulations! You've defeated all your opponents.")
+        changeInfo("You've defeated all your opponents.")
+        restart();
     }
     else {
         changeInfo("You defeated " + enemyJob + "! Pick your next victim.");
@@ -329,6 +352,12 @@ function combatLog() {
     $("#log").append("<br>");
     // then output damage taken
     $("#log").append(enemyJob + " counter attacks you for " + enemyATK + " points of damage!");
+}
+
+// show restart game button
+function restart() {
+    // show a play again button
+    $("#info").append("<button class='restart font-weight-bold text-light text-center p-1 rounded border-warning ml-3 mt-0 mb-0 line-height-1 bg-secondary'>Play Again</button>");
 }
 
 /// events
@@ -351,7 +380,13 @@ $(document).ready(function() {
         // not sure why this only works when it's inside $(".button")
         $(".attack").on("click", function() {
             attackEnemy();
+
+            // again not sure why this needs to be inside $(".attack")
+            $(".restart").on("click", function() {
+                newGame();
+                console.log("this works");
+            })
+
         })
     })
-
 })
