@@ -72,20 +72,19 @@ function selectEnemy(job) {
     // switch case instead of if
     switch (job) {
         case "Astrologian":
-            moveEnemy("#job1", job);
+            moveEnemy("#job1", job, "#atk1");
             enemySelected = true;
-            console.log(characterSelected);
             break;
         case "Bard":
-            moveEnemy("#job2", job);
+            moveEnemy("#job2", job, "#atk2");
             enemySelected = true;
             break;
         case "Dragoon":
-            moveEnemy("#job3", job);
+            moveEnemy("#job3", job, "#atk3");
             enemySelected = true;
             break;
         case "Paladin":
-            moveEnemy("#job4", job);
+            moveEnemy("#job4", job, "#atk4");
             enemySelected = true;
             break;
     }
@@ -104,12 +103,14 @@ function moveCharacter(chr, name) {
 }
 
 // move a selected enemy
-function moveEnemy(chr, name) {
+function moveEnemy(chr, name, atk) {
     var clone = $(chr).clone();
     // hide job from character selection
     $(chr).addClass("invisible");
     // replace select button with class name from clone
     clone.find("button").replaceWith("<h3 class='text-warning'>" + name + "</h3>")
+    // replace enemy attack with counter
+    clone.find(atk).html(characters.find(characters => characters.name === name).counter);
     // move selected character to your character slot
     clone.addClass("col-sm-12").removeClass("col-sm-3");
     $("#enemy").html(clone);
