@@ -35,6 +35,10 @@ var characters = [
 
 var job1 = $("#job1");
 
+/// global booleans
+var characterSelected = false;
+var enemySelected = false;
+
 /// functions
 
 // select a character
@@ -43,30 +47,72 @@ function selectCharacter(job) {
     // switch case instead of if
     switch (job) {
         case "Astrologian":
-            moveCharacter("#job1");
+            moveCharacter("#job1", job);
+            characterSelected = true;
+            console.log(characterSelected);
             break;
         case "Bard":
-            moveCharacter("#job2");
+            moveCharacter("#job2", job);
+            characterSelected = true;
             break;
         case "Dragoon":
-            moveCharacter("#job3");
+            moveCharacter("#job3", job);
+            characterSelected = true;
             break;
         case "Paladin":
-            moveCharacter("#job4");
+            moveCharacter("#job4", job);
+            characterSelected = true;
+            break;
+    }
+}
+
+// select an enemy to battle
+function selectEnemy(job) {
+    console.log(job);
+    // switch case instead of if
+    switch (job) {
+        case "Astrologian":
+            moveEnemy("#job1", job);
+            enemySelected = true;
+            console.log(characterSelected);
+            break;
+        case "Bard":
+            moveEnemy("#job2", job);
+            enemySelected = true;
+            break;
+        case "Dragoon":
+            moveEnemy("#job3", job);
+            enemySelected = true;
+            break;
+        case "Paladin":
+            moveEnemy("#job4", job);
+            enemySelected = true;
             break;
     }
 }
 
 // function to move a selected character
-function moveCharacter(chr) {
+function moveCharacter(chr, name) {
     var clone = $(chr).clone();
     // hide job from character selection
-    $(chr).addClass("d-none");
+    $(chr).addClass("invisible");
     // replace select button with class name from clone
-    clone.find("button").remove();
+    clone.find("button").replaceWith("<h3 class='text-warning'>" + name + "</h3>")
     // move selected character to your character slot
     clone.addClass("col-sm-12").removeClass("col-sm-3");
     $("#you").html(clone);
+}
+
+// move a selected enemy
+function moveEnemy(chr, name) {
+    var clone = $(chr).clone();
+    // hide job from character selection
+    $(chr).addClass("invisible");
+    // replace select button with class name from clone
+    clone.find("button").replaceWith("<h3 class='text-warning'>" + name + "</h3>")
+    // move selected character to your character slot
+    clone.addClass("col-sm-12").removeClass("col-sm-3");
+    $("#enemy").html(clone);
 }
 
 // plug in character information to html elements
@@ -74,7 +120,7 @@ function showCharacters() {
     for (var i = 0; i < 4; i++) {
         $("#jobImg"+(i+1)).attr("src", characters[i].img);
         $("#hp"+(i+1)).html(characters[i].hp);
-        $("#jobName"+(i+1)).html(characters[i].name);
+        $("#jobName"+(i+1)).prepend("<button class='font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary'>" + characters[i].name + "</div>");
         $("#atk"+(i+1)).html(characters[i].atk);
     }
 }
@@ -91,6 +137,17 @@ newGame();
 
 $(document).ready(function() {
     $("button").on("click", function() {
-        selectCharacter(this.textContent);
+        // check if character is already selected
+        if (!(characterSelected)) {
+            selectCharacter(this.textContent);
+        }
+        else {
+            if (!(enemySelected)) {
+                selectEnemy(this.textContent);
+            }
+            else {
+                $("#info").html("Defeat your current enemy first!")
+            }
+        }
     })
 })
