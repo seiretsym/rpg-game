@@ -153,7 +153,6 @@ function moveEnemy(chr, name, atk) {
     clone.find("button").replaceWith("<h3 class='text-warning'>" + name + "</h3>")
     // move selected character to your character slot
     clone.addClass("col-sm-12").removeClass("col-sm-3");
-    clone.find("span").addClass("ehp");
     $("<button class='attack font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary'>Attack</button>").insertAfter(clone.find(atk));
     $("#enemy").html(clone);
 }
@@ -189,7 +188,7 @@ function attackEnemy() {
     if (charJob === "Astrologian") {
         // attack enemy first to reduce hp
         enemyHP -= charATK;
-        $(".ehp").html = enemyHP;
+        updateEnemyHp(enemyJob);
 
         // take damage from enemy counter
         charHP -= enemyATK;
@@ -202,7 +201,7 @@ function attackEnemy() {
     else if (charJob === "Bard") {
         // attack enemy first to reduce hp
         enemyHP -= charATK;
-        $(".ehp").html = enemyHP;
+        updateEnemyHp(enemyJob);
 
         // take damage from enemy counter
         charHP -= enemyATK;
@@ -215,7 +214,7 @@ function attackEnemy() {
     else if (charJob === "Dragoon") {
         // attack enemy first to reduce hp
         enemyHP -= charATK;
-        $(".ehp").html = enemyHP;
+        updateEnemyHp(enemyJob);
 
         // take damage from enemy counter
         charHP -= enemyATK;
@@ -228,8 +227,7 @@ function attackEnemy() {
     else if (charJob === "Paladin") {
         // attack enemy first to reduce hp
         enemyHP -= charATK;
-        $(".ehp").html = enemyHP;
-
+        updateEnemyHp(enemyJob);
 
         // take damage from enemy counter
         charHP -= enemyATK;
@@ -241,6 +239,23 @@ function attackEnemy() {
     }
 }
 
+// update current enemy's hp after attacking
+function updateEnemyHp(enemy) {
+    switch (enemy) {
+        case "Astrologian":
+            $("#enemy").find("#hp1").html(enemyHP);
+            break;
+        case "Bard":
+            $("#enemy").find("#hp2").html(enemyHP);
+            break;
+        case "Dragoon":
+            $("#enemy").find("#hp3").html(enemyHP);
+            break;
+        case "Paladin":
+            $("#enemy").find("#hp4").html(enemyHP);
+            break;
+    }
+}
 /// events
 newGame();
 
