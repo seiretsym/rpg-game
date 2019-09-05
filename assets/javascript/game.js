@@ -186,7 +186,7 @@ function newGame() {
     showCharacters();
     // reset everything!
     $("#you").empty();
-    $("#lose").empty();
+    $("#enemy").empty();
     $("#job1").removeClass("invisible");
     $("#job2").removeClass("invisible");
     $("#job3").removeClass("invisible");
@@ -223,6 +223,13 @@ function attackEnemy() {
             charHP -= enemyATK;
             $("#hp1").html(charHP);
             combatLog();
+            // if your hp is below or qual to 0 then lose
+            if (charHP <= 0) {
+                changeInfo("You've been defeated.")
+                restart();
+                $("#log").html("<br><br>");
+                removeAttackBtn();
+            }
         }
 
         // then update character ATK value
@@ -244,6 +251,13 @@ function attackEnemy() {
             charHP -= enemyATK;
             $("#hp2").html(charHP);
             combatLog();
+            // if your hp is below or qual to 0 then lose
+            if (charHP <= 0) {
+                changeInfo("You've been defeated.")
+                restart();
+                $("#log").html("<br><br>");
+                removeAttackBtn();
+            }
         }
 
         // then update character ATK value
@@ -265,6 +279,13 @@ function attackEnemy() {
             charHP -= enemyATK;
             $("#hp3").html(charHP);
             combatLog();
+            // if your hp is below or qual to 0 then lose
+            if (charHP <= 0) {
+                changeInfo("You've been defeated.")
+                restart();
+                $("#log").html("<br><br>");
+                removeAttackBtn();
+            }
         }
 
         // then update character ATK value
@@ -286,12 +307,24 @@ function attackEnemy() {
             charHP -= enemyATK;
             $("#hp4").html(charHP);
             combatLog();
+            // if your hp is below or qual to 0 then lose
+            if (charHP <= 0) {
+                changeInfo("You've been defeated.")
+                restart();
+                $("#log").html("<br><br>");
+                removeAttackBtn();
+            }
         }
 
         // then update character ATK value
         charATK += characters[3].atk;
         $("#atk4").html(charATK);
     }
+}
+
+// remove attack button
+function removeAttackBtn() {
+    $("#enemy").find(".attack").remove();
 }
 
 // update current enemy's hp after attacking
