@@ -7,44 +7,183 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/reset.css">
     <title>Unit 4 RPG Game by Kerwin Hy</title>
   </head>
   <body>
     <div class="container p-0">
       <div class="row">
+        <!-- Grid for Game Title -->
         <div class="col-sm-12 bg-secondary p-3">
           <h1 class="text-center m-0 text-warning">Final Fantasy XIV: Internal Job Affairs</h1>
         </div>
       </div>
-
+      <!-- Grid for user character -->
       <div class="row">
         <div class="col-sm-2 bg-secondary mt-1 p-3">
-          <p>a</p>
+          <div class="row">
+            <div class="col-sm">
+              <h3 class="text-center text-warning">You:</h3>
+            </div>
+          </div>
+          <div class="row" id="you">
+            <div class="col-sm-3 bg-secondary" id="job">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3" id="jobImg">
+                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="text-warning" id="jobName"></h5>
+                  <p class="text-left font-weight-bold text-warning">
+                    HP:
+                    <span id="hp" class="text-light"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
+        
         <div class="col-sm mt-1 ml-1 mr-1">
           <div class="row">
+            <!-- Grid for info/instructions -->
             <div class="col-sm-12 bg-secondary text-center p-3">
-              <img src="assets/images/ffxiv_ast.png" height="100px">
-              <img src="assets/images/ffxiv_blm.png" height="100px">
-              <img src="assets/images/ffxiv_drg.png" height="100px">
-              <img src="assets/images/ffxiv_drk.png" height="100px">
+              <h3><span id="info" class="text-warning"></span></h3><br>
             </div>
           </div>
+
+          <!-- Grid for character/enemy selection -->
+          <div class="row mt-1 mb-1">
+            <div class="col-sm-3 bg-secondary" id="job">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0 text-center">
+                    <div class="card-body p-3" id="jobImg">
+                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="text-warning" id="jobName"></h5>
+                  <p class="text-left font-weight-bold text-warning">
+                    HP:
+                    <span id="hp" class="text-light"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 bg-secondary" id="job">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3 text-center" id="jobImg">
+                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="text-warning" id="jobName"></h5>
+                  <p class="text-left font-weight-bold text-warning">
+                    HP:
+                    <span id="hp" class="text-light"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 bg-secondary" id="job">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3 text-center" id="jobImg">
+                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="text-warning" id="jobName"></h5>
+                  <p class="text-left font-weight-bold text-warning">
+                    HP:
+                    <span id="hp" class="text-light"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 bg-secondary" id="job">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3 text-center" id="jobImg">
+                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="text-warning" id="jobName"></h5>
+                  <p class="text-left font-weight-bold text-warning">
+                    HP:
+                    <span id="hp" class="text-light"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Grid for combat information -->
           <div class="row">
             <div class="col-sm-12 bg-secondary p-3">
-              test
+              <h5 class="text-warning">Combat Log: </h5>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-2 mt-1 bg-secondary p-3">
-        <p>a</p>
+        <!-- Grid for Combatant/Enemy -->
+        <div class="col-sm-2 bg-secondary mt-1 p-3">
+          <div class="row">
+            <div class="col-sm">
+              <h3 class="text-center text-warning">Enemy:</h3>
+            </div>
+          </div>
+          <div class="row" id="you">
+            <div class="col-sm-3 bg-secondary" id="job">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3" id="jobImg">
+                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="text-warning" id="jobName"></h5>
+                  <p class="text-left font-weight-bold text-warning">
+                    HP:
+                    <span id="hp" class="text-light"></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       </div>
     </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     </div>
