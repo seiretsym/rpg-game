@@ -63,6 +63,7 @@ function selectCharacter(job) {
             characterSelected = true;
             break;
     }
+    changeInfo("Select your enemy!")
 }
 
 // select an enemy to battle
@@ -87,6 +88,7 @@ function selectEnemy(job) {
             enemySelected = true;
             break;
     }
+    changeInfo("Defeat your enemy!")
 }
 
 // function to move a selected character
@@ -112,6 +114,7 @@ function moveEnemy(chr, name, atk) {
     clone.find(atk).html(characters.find(characters => characters.name === name).counter);
     // move selected character to your character slot
     clone.addClass("col-sm-12").removeClass("col-sm-3");
+    clone.append("<button class='font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary'> Attack </button>");
     $("#enemy").html(clone);
 }
 
@@ -120,7 +123,7 @@ function showCharacters() {
     for (var i = 0; i < 4; i++) {
         $("#jobImg"+(i+1)).attr("src", characters[i].img);
         $("#hp"+(i+1)).html(characters[i].hp);
-        $("#jobName"+(i+1)).prepend("<button class='font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary'>" + characters[i].name + "</div>");
+        $("#jobName"+(i+1)).prepend("<button class='font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary'>" + characters[i].name + "</button>");
         $("#atk"+(i+1)).html(characters[i].atk);
     }
 }
