@@ -60,83 +60,96 @@
 
           <!-- Grid for character/enemy selection -->
           <div class="row mt-1 mb-1">
-            <div class="col-sm-3 bg-secondary" id="job">
+            <div class="col-sm-3 bg-secondary" id="job1">
               <div class="row">
                 <div class="col-sm">
                   <div class="card bg-transparent border-0 text-center">
-                    <div class="card-body p-3" id="jobImg">
-                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    <div class="card-body p-3">
+                      <img id="jobImg1" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm text-center">
+                  <button class="font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary" id="jobName1"></button>
+                  <p class="text-left font-weight-bold text-warning m-0">
+                    HP:
+                    <span id="hp1" class="text-light"></span>
+                  </p>
+                  <p class="text-left font-weight-bold text-warning">
+                    ATK:
+                  <span id="atk1" class="text-light"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 bg-secondary" id="job2">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3 text-center">
+                      <img id="jobImg2" height="100px">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm">
-                  <h5 class="text-warning" id="jobName"></h5>
-                  <p class="text-left font-weight-bold text-warning">
+                    <button class="font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary" id="jobName2"></button>
+                  <p class="text-left font-weight-bold text-warning m-0">
                     HP:
-                    <span id="hp" class="text-light"></span>
+                    <span id="hp2" class="text-light"></span>
+                  </p>
+                  <p class="text-left font-weight-bold text-warning">
+                    ATK:
+                  <span id="atk2" class="text-light"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3 bg-secondary" id="job3">
+              <div class="row">
+                <div class="col-sm">
+                  <div class="card bg-transparent border-0">
+                    <div class="card-body p-3 text-center">
+                      <img id="jobImg3" height="100px">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm">
+                  <button class="font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary" id="jobName3"></button>
+                  <p class="text-left font-weight-bold text-warning m-0">
+                    HP:
+                    <span id="hp3" class="text-light"></span>
+                  </p>
+                  <p class="text-left font-weight-bold text-warning">
+                    ATK:
+                  <span id="atk3" class="text-light"></span>
                   </p>
                 </div>
               </div>
             </div>
-            <div class="col-sm-3 bg-secondary" id="job">
+            <div class="col-sm-3 bg-secondary" id="job4">
               <div class="row">
                 <div class="col-sm">
                   <div class="card bg-transparent border-0">
-                    <div class="card-body p-3 text-center" id="jobImg">
-                      <img src="assets/images/ffxiv_ast.png" height="100px">
+                    <div class="card-body p-3 text-center">
+                      <img id="jobImg4" height="100px">
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm">
-                  <h5 class="text-warning" id="jobName"></h5>
-                  <p class="text-left font-weight-bold text-warning">
+                  <button class="font-weight-bold text-light text-center p-1 w-100 rounded border-warning m-0 bg-secondary" id="jobName4"></button>
+                  <p class="text-left font-weight-bold text-warning m-0">
                     HP:
-                    <span id="hp" class="text-light"></span>
+                    <span id="hp4" class="text-light"></span>
                   </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 bg-secondary" id="job">
-              <div class="row">
-                <div class="col-sm">
-                  <div class="card bg-transparent border-0">
-                    <div class="card-body p-3 text-center" id="jobImg">
-                      <img src="assets/images/ffxiv_ast.png" height="100px">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm">
-                  <h5 class="text-warning" id="jobName"></h5>
                   <p class="text-left font-weight-bold text-warning">
-                    HP:
-                    <span id="hp" class="text-light"></span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-3 bg-secondary" id="job">
-              <div class="row">
-                <div class="col-sm">
-                  <div class="card bg-transparent border-0">
-                    <div class="card-body p-3 text-center" id="jobImg">
-                      <img src="assets/images/ffxiv_ast.png" height="100px">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm">
-                  <h5 class="text-warning" id="jobName"></h5>
-                  <p class="text-left font-weight-bold text-warning">
-                    HP:
-                    <span id="hp" class="text-light"></span>
-                  </p>
+                    ATK:
+                  <span id="atk4" class="text-light"></span>
                 </div>
               </div>
             </div>
@@ -190,5 +203,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="assets/javascript/game.js"></script>
   </body>
 </html>
