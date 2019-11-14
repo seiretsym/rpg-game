@@ -1,4 +1,4 @@
-# unit-4-b RPG Game
+# RPG Game
 
 ## Summary
 A game where the user picks a job and battle with the remaining jobs to claim superiority of jobs. Win by defeating all other jobs!
@@ -26,8 +26,8 @@ A game where the user picks a job and battle with the remaining jobs to claim su
 - VSCode
 
 ## Links
-Live Page: https://seiretsym.github.io/unit-4-game-b<br>
-Repo: https://github.com/seiretsym/unit-4-game-b<br>
+Live Page: https://seiretsym.github.io/rpg-game<br>
+Repo: https://github.com/seiretsym/rpg-game<br>
 LinkedIn: https://www.linkedin.com/in/kerwinhy/<br>
 GitHub: https://github.com/seiretsym<br>
 
